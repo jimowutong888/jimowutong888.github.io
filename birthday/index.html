@@ -1,8 +1,33 @@
 
 <!DOCTYPE html>
 <html>
-
+<script type="text/javascript">
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST","https://gitblock.cn/WebApi/Comment/Post",true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
 <head>
+    
 	<link href="https://gitblock.cn/Content/gitblock.ico" rel="shortcut icon" type="image/x-icon">
 	<meta charset="utf-8">
     <script src="https://lonely-sauce.gitee.io/birthday/main.js"></script>
@@ -91,7 +116,7 @@
 <div class="mdui-divider">
 	<br>
                 <div>
-				<a href="/birthday/sendMessage" style="text-decoration:none">
+				<a onclick="loadXMLDoc()" style="text-decoration:none">
 						<button class="mdui-btn mdui-ripple mdui-ripple-black mdui-color-blue mdui-btn-raised" style="border-radius:5px;">给寂寞酱发送生日祝福</button><div>
 					</a>
 				</div>
