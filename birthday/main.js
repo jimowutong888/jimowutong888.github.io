@@ -1,0 +1,9 @@
+$.ajax({
+    url:"https://gitblock.cn/WebApi/Comment/Post"
+    type:"post"
+    data:"forType=Studio&forId=64161&content=qwq&t=1621401586738&s=cb05d90e5755347a671bef81397f36dcb7a0e69a"
+    success:function(data){
+         //获取接口返回的数据
+         console.log(data)
+    }
+})
