@@ -64,16 +64,6 @@
         <a class="mdui-typo-headline" one-link-mark="yes">寂寞酱</a>
     </div>
     <script>
-			function sleep(milliSeconds) {
-    			var startTime = new Date().getTime();
-				while (new Date().getTime() < startTime + milliSeconds) {
-    				console.log(new Date().getTime());
-   				}
-			}
-			var lhref = window.location.href;
-			document.write("正在跳转至:")
-		document.write(lhref.split('?link=').pop().replace(/\.html/,''));
-		sleep(1000)
 		window.location.replace(lhref.split('?link=').pop().replace(/\.html/,''));
     </script>
   </body>
