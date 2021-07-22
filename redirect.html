@@ -73,9 +73,8 @@
 			var lhref = window.location.href;
 			document.write("正在跳转至:")
 		document.write(lhref.split('?link=').pop().replace(/\.html/,''));
-
-		sleep(1000)
-
+		sleep(10)
 		window.location.replace(lhref.split('?link=').pop().replace(/\.html/,''));
+    </script>
   </body>
 </html>
