@@ -91,7 +91,7 @@
  }; 
 // js文件从此向下 
 // 创建音乐数组 
- var musicModels = []; 
+ var musicModels = ['http://music.163.com/song/media/outer/url?id=27180681.mp3']; 
  //创建音乐播放器对象 
  var player= new Player(); 
  /*Ajax 目的是在js中实现异步操作 
