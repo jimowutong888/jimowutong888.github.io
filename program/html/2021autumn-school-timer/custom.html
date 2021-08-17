@@ -60,6 +60,7 @@
                 var sTxtSec = aSpan[3] //秒
                 var oTxtTarget = document.getElementsByTagName('b')[0];
                 var timer = null;
+                updateTime();
                 $('btn1').onclick = function() {
                     timer = setInterval(updateTime, 1000);
                     updateTime();
@@ -70,10 +71,6 @@
                     var sYear = Math.abs(oYear.value);
                     var sMonth = Math.abs(oMonth.value);
                     var sDay = Math.abs(oDay.value);
-                    if(sMonth > 8 && sDay > 1){
-                        clearInterval(timer);
-                        return;
-                    }
                     if(sMonth > 12 || sDay > 31){
                         clearInterval(timer);
                         return;
@@ -97,6 +94,13 @@
 
                     iRemain %= 60;
                     var iSec = iRemain; //剩余秒
+
+                    if(sMonth > 8 && sDay > 1){
+                        var iDay = 0;
+                        var iHour = 0;
+                        var iMin = 0;
+                        var iSec = 0;
+                    }
 
                     sTxtDay.innerHTML = fillZero(iDay, 2);
                     sTxtHour.innerHTML = fillZero(iHour, 2);
