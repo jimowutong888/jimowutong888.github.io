@@ -60,8 +60,10 @@
                 var sTxtSec = aSpan[3] //秒
                 var oTxtTarget = document.getElementsByTagName('b')[0];
                 var timer = null;
-                timer = setInterval(updateTime, 1000);
-                updateTime();
+                $('btn1').onclick = function() {
+                    timer = setInterval(updateTime, 1000);
+                    updateTime();
+                }
 
                 function updateTime() {
                     
@@ -113,6 +115,7 @@
                 <span>00</span>分
                 <span>00</span>秒
             </div>
+            <button id="btn1">刷新计时器</button>
         </div>
     </body>
 </html>
