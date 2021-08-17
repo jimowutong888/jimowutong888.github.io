@@ -70,11 +70,11 @@
                     var sYear = Math.abs(oYear.value);
                     var sMonth = Math.abs(oMonth.value);
                     var sDay = Math.abs(oDay.value);
-                    if(sMonth > 8 || sDay > 1){
+                    if(sMonth > 8 && sDay > 1){
                         clearInterval(timer);
                         return;
                     }
-                    if(sMonth > 12 && sDay > 31){
+                    if(sMonth > 12 || sDay > 31){
                         clearInterval(timer);
                         return;
                     }
