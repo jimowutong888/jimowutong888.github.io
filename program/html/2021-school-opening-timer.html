@@ -68,9 +68,9 @@
 
                 function updateTime() {
                     
-                    var sYear = Math.abs(oYear.value);
-                    var sMonth = Math.abs(oMonth.value);
-                    var sDay = Math.abs(oDay.value);
+                    var sYear = 2021;
+                    var sMonth = 08;
+                    var sDay = 28;
                     if(sMonth > 12 || sDay > 31){
                         clearInterval(timer);
                         return;
@@ -108,9 +108,9 @@
 
     <body>
         <div id="time">
-            <input class="displayNone" type="number" value="2021" />年
-            <input class="displayNone" type="number" value="08" />月
-            <input class="displayNone" type="number" value="28" />日
+            <div class="displayNone" type="number" value="2021" />年
+            <div class="displayNone" type="number" value="08" />月
+            <div class="displayNone" type="number" value="28" />日
             <p>现在距离<b>2021 年 08 月 28 日</b> 还剩 </p>
             <div id="start">
                 <span>00</span>天
