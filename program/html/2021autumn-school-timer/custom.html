@@ -61,14 +61,14 @@
                 var oTxtTarget = document.getElementsByTagName('b')[0];
                 var timer = null;
                 timer = setInterval(updateTime, 1000);
-                setInterval(updateTime(),Infinity);
+                updateTime();
 
                 function updateTime() {
                     
                     var sYear = Math.abs(oYear.value);
                     var sMonth = Math.abs(oMonth.value);
                     var sDay = Math.abs(oDay.value);
-                    if(sMonth > 9 || sDay > 1){
+                    if(sMonth > 9 && sDay > 1){
                         clearInterval(timer);
                         alert('真羡慕你这个极其诡异的开学时间');
                         return;
