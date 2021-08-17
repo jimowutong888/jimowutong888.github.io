@@ -77,7 +77,6 @@
                     var sDay = Math.abs(oDay.value);
                     if(sMonth > 12 || sDay > 31){
                         clearInterval(timer);
-                        alert('你又调皮了');
                         return;
                     }
                     oTxtTarget.innerHTML = sYear + ' 年 ' + sMonth + ' 月 ' + sDay + ' 日 ';
@@ -88,7 +87,6 @@
                     if(iRemain <= 0) { //判断开始时间是否小于或等于今天
                         clearInterval(timer);
                         iRemain = 0;
-                        alert('请输入大于今天的时间');
                     }
                     var iDay = parseInt(iRemain / 86400); //剩余天数
 
@@ -114,9 +112,9 @@
 
     <body>
         <div id="time">
-            <input type="number" value="2021" />年
-            <input type="number" value="08" />月
-            <input type="number" value="28" />日
+            <div type="number" value="2021" />年
+            <div type="number" value="08" />月
+            <div type="number" value="28" />日
             <p>现在距离<b>2021 年 08 月 28 日</b> 还剩 </p>
             <div id="start">
                 <span>00</span>天
