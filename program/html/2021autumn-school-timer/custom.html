@@ -23,8 +23,16 @@
             }
     </style>
     </head>
-    
-    <script>
+
+  <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-theme-layout-dark mdui-text-color-light-green mdui-valign" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+  <div class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed mdui-appbar-scroll-hide mdui-headroom mdui-headroom-pinned-top">
+    <div class="mdui-toolbar mdui-color-theme">
+      <a class="mdui-typo-headline" one-link-mark="yes">暑期开学倒计时 - 2021</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </div>
+
+  <script>
             function $(el) {
                 if(typeof(el) == 'string') {
                     return(document.getElementById(el));
@@ -57,7 +65,8 @@
                     timer = setInterval(updateTime, 1000);
                     updateTime();
                 }
-                function init() {
+                
+                window.onload = function() {
                     var oDiv1 = $('time');
                     var aInput = oDiv1.getElementsByTagName('input');
                     var oYear = aInput[0]; //年
@@ -71,7 +80,6 @@
                     var sTxtSec = aSpan[3] //秒
                     var oTxtTarget = document.getElementsByTagName('b')[0];
                     var timer = null;
-                    timer = setInterval(updateTime, 1000);
                     updateTime();
                 }
 
@@ -121,13 +129,6 @@
             }
     </script>
 
-  <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-theme-layout-dark mdui-text-color-light-green mdui-valign" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onload="init()">
-  <div class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed mdui-appbar-scroll-hide mdui-headroom mdui-headroom-pinned-top">
-    <div class="mdui-toolbar mdui-color-theme">
-      <a class="mdui-typo-headline" one-link-mark="yes">暑期开学倒计时 - 2021</a>
-      <div class="mdui-toolbar-spacer"></div>
-    </div>
-  </div>
         <div id="time" class="mdui-container">
             <input type="number" min="2021" max="2021" value="2021" /> 
             <input type="number" min="8" max="9" value="8" /> 
