@@ -9,29 +9,16 @@
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
     <style>
             #time {
-                font-weight: 500;
+                font-weight: 600;
                 text-align: center;
                 margin: 100px auto;
             }
             
-            #time input {
-                margin: 20px auto;
-                text-align: center;
-                border-radius: 10px;
+            #content {
+                font-size: 3em;
             }
-            
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-            }
-            
-            button {
-                margin: 0 0 0 35px;
-                border-radius: 10px;
-            }
-            
-            #start {
-                font-size: 1.55em;
+            #title {
+                font-size: 2em;
             }
         </style>
         <script>
@@ -125,8 +112,8 @@
 
     </div>
         <div id="time">
-            <p>现在距离 <b>2021 年 08 月 28 日</b> 还剩</p>
-            <div id="start">
+            <p id="title">现在距离 <b>2021 年 08 月 28 日</b> 还剩</p>
+            <div id="content">
                 <span>00</span>天
                 <span>00</span>小时
                 <span>00</span>分
