@@ -89,7 +89,7 @@
                         document.getElementById('tips').innerHTML = tips
                         return;
                     }
-                    oTxtTarget.innerHTML = sYear + ' 年 ' + fillZero(sMonth,2) + ' 月 ' + sDay + ' 日 ';
+                    oTxtTarget.innerHTML = fillZero(sYear,4) + ' 年 ' + fillZero(sMonth,2) + ' 月 ' + fillZero(sDay,2) + ' 日 ';
                     var oEndDate = new Date(sYear, (sMonth - 1), sDay);
                     var oNowDate = new Date();
                     var iRemain = 0;
