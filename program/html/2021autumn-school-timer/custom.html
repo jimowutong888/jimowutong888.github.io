@@ -95,17 +95,18 @@
                     if(sMonth > 12 || sDay > 31){
                         clearInterval(timer);
                         tips = "输入的日期不是一个合法的日期"
-                        document.getElementById('tips').innerHTML = tips
                     }
                     oTxtTarget.innerHTML = fillZero(sYear,4) + ' 年 ' + fillZero(sMonth,2) + ' 月 ' + fillZero(sDay,2) + ' 日 ';
                     var oEndDate = new Date(sYear, (sMonth - 1), sDay);
                     var oNowDate = new Date();
                     var iRemain = 0;
                     iRemain = parseInt((oEndDate.getTime() - oNowDate.getTime()) / 1000);
-                    if(iRemain <= 0 && tips = "") { //判断开始时间是否小于或等于今天
+                    if(iRemain <= 0) { //判断开始时间是否小于或等于今天
                         clearInterval(timer);
                         iRemain = 0;
-                        tips = "输入的日期小于等于当日"
+                        if(tips == ""){
+                            tips = "输入的日期小于等于当日"
+                        }
                     }
                     var iDay = parseInt(iRemain / 86400); //剩余天数
 
@@ -118,12 +119,14 @@
                     iRemain %= 60;
                     var iSec = iRemain; //剩余秒
 
-                    if(sYear != 2021 || sMonth > 8 && sDay > 1 && tips = ""){
+                    if(sYear != 2021 || sMonth > 8 && sDay > 1){
                         var iDay = 0;
                         var iHour = 0;
                         var iMin = 0;
                         var iSec = 0;
-                        tips = "输入的日期不是一个合法的开学日期"
+                        if(tips == ""){
+                            tips = "输入的日期不是一个合法的开学日期"
+                        }
                     }
 					sTxtDay.innerHTML = fillZero(iDay, 2);
                     sTxtHour.innerHTML = fillZero(iHour, 2);
