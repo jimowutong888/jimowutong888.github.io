@@ -96,7 +96,6 @@
                         clearInterval(timer);
                         tips = "输入的日期不是一个合法的日期"
                         document.getElementById('tips').innerHTML = tips
-                        return;
                     }
                     oTxtTarget.innerHTML = fillZero(sYear,4) + ' 年 ' + fillZero(sMonth,2) + ' 月 ' + fillZero(sDay,2) + ' 日 ';
                     var oEndDate = new Date(sYear, (sMonth - 1), sDay);
