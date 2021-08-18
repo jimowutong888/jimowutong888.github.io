@@ -22,6 +22,14 @@
             #title {
                 font-size: 1.5em;
             }
+            #tips {
+                font-weight: 600;
+                text-align: center;
+                font-size: 1.5em;
+            }
+            #btn {
+            	display : none;
+            }
     </style>
     </head>
 
@@ -64,21 +72,24 @@
                 var timer = null;
                 timer = setInterval(updateTime, 1000);
                 updateTime();
-                $('btn1').onclick = function() {
+                $('btn').onclick = function() {
                     timer = setInterval(updateTime, 1000);
                     updateTime();
                 }
 
                 function updateTime() {
                     
+                    var tips = ""
                     var sYear = Math.abs(oYear.value);
                     var sMonth = Math.abs(oMonth.value);
                     var sDay = Math.abs(oDay.value);
                     if(sMonth > 12 || sDay > 31){
                         clearInterval(timer);
+                        tips = "输入的日期不是一个合法的日期"
+                        document.getElementById('tips').innerHTML = tips
                         return;
                     }
-                    oTxtTarget.innerHTML = sYear + ' 年 ' + sMonth + ' 月 ' + sDay + ' 日 ';
+                    oTxtTarget.innerHTML = sYear + ' 年 ' + fillZero(sMonth,2) + ' 月 ' + sDay + ' 日 ';
                     var oEndDate = new Date(sYear, (sMonth - 1), sDay);
                     var oNowDate = new Date();
                     var iRemain = 0;
@@ -86,6 +97,7 @@
                     if(iRemain <= 0) { //判断开始时间是否小于或等于今天
                         clearInterval(timer);
                         iRemain = 0;
+                        tips = "输入的日期不存在或小于等于当日"
                     }
                     var iDay = parseInt(iRemain / 86400); //剩余天数
 
@@ -98,17 +110,18 @@
                     iRemain %= 60;
                     var iSec = iRemain; //剩余秒
 
-                    if(sMonth > 8 && sDay > 1){
+                    if(sYear != 2021 || sMonth > 8 && sDay > 1){
                         var iDay = 0;
                         var iHour = 0;
                         var iMin = 0;
                         var iSec = 0;
+                        tips = "输入的日期不存在或不是一个合法的开学日期"
                     }
-
-                    sTxtDay.innerHTML = fillZero(iDay, 2);
+					sTxtDay.innerHTML = fillZero(iDay, 2);
                     sTxtHour.innerHTML = fillZero(iHour, 2);
                     sTxtMin.innerHTML = fillZero(iMin, 2);
                     sTxtSec.innerHTML = fillZero(iSec, 2);
+                    document.getElementById('tips').innerHTML = tips
                 }
                 
 
@@ -117,7 +130,7 @@
 
         <div id="time" class="mdui-container">
             <input type="number" min="2021" max="2021" value="2021" /> 
-            <input type="number" min="8" max="9" value="8" /> 
+            <input type="number" min="1" max="12" value="8" /> 
             <input type="number" min="1" max="31" value="28" />
             <p id="title">现在距离 <b>2021 年 08 月 28 日</b> 还剩</p>
             <div id="content">
@@ -127,7 +140,8 @@
                 <span>00</span>秒
             </div>
             </br>
-            <button id="btn1" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent btn-lg">刷新计时器</button>
+            <button id="btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent btn-lg">刷新计时器</button>
+            <div id="tips" class="mdui-text-color-red">输入不合法</div>
         </div>
     </body>
 </html>
