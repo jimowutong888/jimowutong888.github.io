@@ -102,7 +102,7 @@
                     var oNowDate = new Date();
                     var iRemain = 0;
                     iRemain = parseInt((oEndDate.getTime() - oNowDate.getTime()) / 1000);
-                    if(iRemain <= 0) { //判断开始时间是否小于或等于今天
+                    if(iRemain <= 0 && tips = "") { //判断开始时间是否小于或等于今天
                         clearInterval(timer);
                         iRemain = 0;
                         tips = "输入的日期小于等于当日"
@@ -118,7 +118,7 @@
                     iRemain %= 60;
                     var iSec = iRemain; //剩余秒
 
-                    if(sYear != 2021 || sMonth > 8 && sDay > 1){
+                    if(sYear != 2021 || sMonth > 8 && sDay > 1 && tips = ""){
                         var iDay = 0;
                         var iHour = 0;
                         var iMin = 0;
