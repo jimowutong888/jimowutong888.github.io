@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,25 +62,10 @@
                 var sTxtSec = aSpan[3] //秒
                 var oTxtTarget = document.getElementsByTagName('b')[0];
                 var timer = null;
+                timer = setInterval(updateTime, 1000);
+                updateTime();
                 $('btn1').onclick = function() {
                     timer = setInterval(updateTime, 1000);
-                    updateTime();
-                }
-                
-                window.onload = function() {
-                    var oDiv1 = $('time');
-                    var aInput = oDiv1.getElementsByTagName('input');
-                    var oYear = aInput[0]; //年
-                    var oMonth = aInput[1]; //月
-                    var oDay = aInput[2] //日
-                    var oDiv2 = $('content');
-                    var aSpan = oDiv2.getElementsByTagName('span');
-                    var sTxtDay = aSpan[0]; //天
-                    var sTxtHour = aSpan[1] //小时
-                    var sTxtMin = aSpan[2] //分
-                    var sTxtSec = aSpan[3] //秒
-                    var oTxtTarget = document.getElementsByTagName('b')[0];
-                    var timer = null;
                     updateTime();
                 }
 
