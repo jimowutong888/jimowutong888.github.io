@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
     </head>
-    <style>
+    <style type="text/css">
         body{
 			text-align:center;
 			font-family: Arial, Helvetica, sans-serif;
@@ -22,6 +22,7 @@
 			border:5px solid #37474F;
 			position: absolute;
 			width: 25%;
+            height : 600px;
 			margin: auto;
 			top: 100px;
 			left: 15%;
@@ -31,22 +32,26 @@
 			border-radius:20px;
 			width: 40px;
 			height: 40px;
-			position: absolute;
 			left: 0px;
 		}
-		.administrators{
+		.admin1{
 			position: absolute;
-			left: 20%;
-			right: 20%;
-			height: 30px;
+           	text-align:center;
+			left: 15%;
+            width : 100px;
+			height: 100px;
+		}
+        .admin2{
+			position: absolute;
+           	text-align:center;
+			left: 50%;
+            width : 100px;
+			height: 100px;
 		}
 		.userName{
-        	font-weight:500;
-			position: absolute;
-			left: 40px;
-			top: 20%;
+			left: 50px;
+			top: 30%;
 		}
-		
 		.content{
 			background-color: #78909C;
 			border:5px solid #37474F;
@@ -111,21 +116,18 @@
 		<br><br>
 		<hr align=center width=95% color=grey size=1>
 		<h3>话题管理员</h3>
-		<a href="https://ccw.site/student/604cbc6cb5f9c272855d4526" style="text-decoration:none">
-			<div class="administrators">
-				<img class="headPortrait" mdui-dialog="options" src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt="">
-				<div class="userName">寂寞酱</div>
-			</div>
+		<a href="https://ccw.site/student/5cfe55d5f1880737bf1237a9" style="text-decoration:none">
+			<button class="mdui-btn mdui-btn-raised admin1">
+				<img class="headPortrait" mdui-dialog="options" src="https://api.ixiaowai.cn/mcapi/mcapi.php">
+				<div style="font-weight:500;">寂寞</div>
+			</button>
 		</a>
-		<br><br><br>
-		<a href="https://ccw.site/student/60c61c28049be31736957114" style="text-decoration:none">
-			<div class="administrators">
-				<img class="headPortrait" src="https://m.xiguacity.cn/avatar/606db5cd26b89753f05452f1/422680ca-4521-42bb-ac9c-aa69684d8d8c.png" alt="headPortrait.png">
-				<div class="userName">用2G网络的单身大叔昔年</div>
-			</div>
-
+        <a href="https://ccw.site/student/606db5cd26b89753f05452f1" style="text-decoration:none">
+			<button class="mdui-btn mdui-btn-raised admin2">
+				<img class="headPortrait" mdui-dialog="options" src="https://m.xiguacity.cn/avatar/606db5cd26b89753f05452f1/422680ca-4521-42bb-ac9c-aa69684d8d8c.png">
+				<div style="font-weight:500;">昔年</div>
+			</button>
 		</a>
-		<br><br><br>
 	</div>
 	<br>
 
