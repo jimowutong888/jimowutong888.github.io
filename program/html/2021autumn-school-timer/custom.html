@@ -23,7 +23,7 @@
             #tips {
                 font-weight: 600;
                 text-align: center;
-                font-size: 1.5em;
+                font-size: 1em;
                 margin: 20px auto;
             }
             #select {
@@ -106,7 +106,7 @@
                     if(iRemain <= 0) { //判断开始时间是否小于或等于今天
                         clearInterval(timer);
                         iRemain = 0;
-                        tips = "输入的日期不存在或小于等于当日"
+                        tips = "输入的日期小于等于当日"
                     }
                     var iDay = parseInt(iRemain / 86400); //剩余天数
 
@@ -124,7 +124,7 @@
                         var iHour = 0;
                         var iMin = 0;
                         var iSec = 0;
-                        tips = "输入的日期不存在或不是一个合法的开学日期"
+                        tips = "输入的日期不是一个合法的开学日期"
                     }
 					sTxtDay.innerHTML = fillZero(iDay, 2);
                     sTxtHour.innerHTML = fillZero(iHour, 2);
