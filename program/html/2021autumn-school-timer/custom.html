@@ -110,13 +110,16 @@
                     var iSec = iRemain; //剩余秒
 
                     if(sYear != 2021 || sMonth > 9 || sMonth == 9 && sDay > 1){
+                        if(tips == ""){
+                            tips = "输入的日期不是一个合法的开学日期"
+                        }
+                    }
+
+                    if(tips != ""){
                         var iDay = 0;
                         var iHour = 0;
                         var iMin = 0;
                         var iSec = 0;
-                        if(tips == ""){
-                            tips = "输入的日期不是一个合法的开学日期"
-                        }
                     }
 					sTxtDay.innerHTML = fillZero(iDay, 2);
                     sTxtHour.innerHTML = fillZero(iHour, 2);
