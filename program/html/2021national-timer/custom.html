@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>寂寞酱 - 国庆假期倒计时</title>
+    <link rel="icon" type="image/x-icon" href="/static/img/logo.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+    <style>
+            #time {
+                font-weight: 600;
+                text-align: center;
+                margin: 100px auto;
+            }
+            #content {
+                font-size: 2em;
+            }
+            #title {
+                font-size: 1.5em;
+            }
+            #abstract {
+                font-size: 3em;
+            }
+            #tips {
+                font-weight: 600;
+                text-align: center;
+                font-size: 1em;
+                margin: 20px auto;
+            }
+            #select {
+            	font-size: 1em;
+            }
+    </style>
+    </head>
+
+  <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-theme-layout-dark mdui-text-color-light-green mdui-valign mdui-bottom-nav-fixed" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+  <div class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed mdui-appbar-scroll-hide mdui-headroom mdui-headroom-pinned-top">
+    <div class="mdui-toolbar mdui-color-theme">
+      <a class="mdui-typo-headline" one-link-mark="yes">国庆假期倒计时 - 2021</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </div>
+
+  <script>
+            function $(el) {
+                if(typeof(el) == 'string') {
+                    return(document.getElementById(el));
+                }
+                return(el);
+            }
+
+            function fillZero(num, digit) {
+                var str = '' + num;
+                if(str.length < digit) {
+                    str = '0' + str;
+                }
+                return str;
+            }
+            window.onload = function() {
+                var oDiv1 = $('time');
+                var aInput = oDiv1.getElementsByTagName('input');
+                var oYear = aInput[0]; //年
+                var oMonth = aInput[1]; //月
+                var oDay = aInput[2] //日
+                var oDiv2 = $('content');
+                var aSpan = oDiv2.getElementsByTagName('span');
+                var sTxtDay = aSpan[0]; //天
+                var sTxtHour = aSpan[1] //小时
+                var sTxtMin = aSpan[2] //分
+                var sTxtSec = aSpan[3] //秒
+                var oTxtTarget = document.getElementsByTagName('b')[0];
+                var timer = null;
+                timer = setInterval(updateTime, 10);
+                setInterval(updateTime, 10);
+                $('btn').onclick = function() {
+                    timer = setInterval(updateTime, 10);
+                    updateTime();
+                }
+
+                function updateTime() {
+                    
+                    var tips = ""
+                    var sYear = Math.abs(oYear.value);
+                    var sMonth = Math.abs(oMonth.value);
+                    var sDay = Math.abs(oDay.value);
+                    if(sMonth > 12 || sDay > 31){
+                        clearInterval(timer);
+                        tips = "输入的日期不是一个合法的日期"
+                    }
+                    oTxtTarget.innerHTML = fillZero(sYear,4) + ' 年 ' + fillZero(sMonth,2) + ' 月 ' + fillZero(sDay,2) + ' 日 ';
+                    var oEndDate = new Date(sYear, (sMonth - 1), sDay);
+                    var oNowDate = new Date();
+                    var iRemain = 0;
+                    iRemain = parseInt((oEndDate.getTime() - oNowDate.getTime()) / 1000);
+                    if(iRemain <= 0) { //判断开始时间是否小于或等于今天
+                        clearInterval(timer);
+                        iRemain = 0;
+                        if(tips == ""){
+                            tips = "输入的日期小于等于当日"
+                        }
+                    }
+                    var iDay = parseInt(iRemain / 86400); //剩余天数
+
+                    iRemain %= 86400;
+                    var iHour = parseInt(iRemain / 3600); //剩余小时
+
+                    iRemain %= 3600;
+                    var iMin = parseInt(iRemain / 60); //剩余分钟
+
+                    iRemain %= 60;
+                    var iSec = iRemain; //剩余秒
+
+                    if(sYear != 2021 || sMonth > 9 || sMonth == 9 && sDay > 1){
+                        if(tips == ""){
+                            tips = "输入的日期不是一个合法的开学日期"
+                        }
+                    }
+
+                    if(tips != ""){
+                        var iDay = 0;
+                        var iHour = 0;
+                        var iMin = 0;
+                        var iSec = 0;
+                    }
+					sTxtDay.innerHTML = fillZero(iDay, 2);
+                    sTxtHour.innerHTML = fillZero(iHour, 2);
+                    sTxtMin.innerHTML = fillZero(iMin, 2);
+                    sTxtSec.innerHTML = fillZero(iSec, 2);
+                    document.getElementById('tips').innerHTML = tips
+                }
+                
+
+            }
+    </script>
+
+        <div id="time" class="mdui-container">
+            <div id="abstract" class="mdui-text-color-red">祝愿我们的祖国72岁生日快乐~</div>
+            <div class="mdui-divider-light"></div>
+        	<div class="mdui-text-color-amber" id="select">
+            <input class="mdui-btn mdui-btn-raised" oninput="if(value.length > 4) value=value.slice(0,4)" type="number" min="2021" max="2021" value="2021" />年 
+            <input class="mdui-btn mdui-btn-raised" oninput="if(value.length > 2) value=value.slice(0,2)" type="number" min="1" max="12" value="10" />月 
+            <input class="mdui-btn mdui-btn-raised" oninput="if(value.length > 2) value=value.slice(0,2)" type="number" min="1" max="31" value="8" />日
+            </div>
+            </br>
+            <p id="title">现在距离 <b>2021 年 10 月 8 日</b> 还剩</p>
+            <div id="content">
+                <span>00</span>天
+                <span>00</span>小时
+                <span>00</span>分
+                <span>00</span>秒
+            </div>
+
+            <button id="btn" class="mdui-hidden mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent btn-lg">刷新计时器</button>
+
+            <div id="tips" class="mdui-text-color-red"></div>
+            
+        </div>
+        
+        <div class="mdui-bottom-nav mdui-color-grey">
+  			<a href="/program/html/2021autumn-school-timer" class="mdui-ripple">
+    			<i class="mdui-icon material-icons">alarm</i>
+    			<label>默认</label>
+  			</a>
+  			<a href="#" class="mdui-ripple mdui-bottom-nav-active">
+    			<i class="mdui-icon material-icons">alarm_on</i>
+    			<label>自定义</label>
+  			</a>
+		</div>
+
+    </body>
+</html>
