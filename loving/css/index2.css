@@ -18,6 +18,7 @@
     width:80px;
     height:80px;
     margin:200px auto;
+    background-color:#cc2a5d;
     position: relative;
     transform: rotate(45deg);
     animation: heart 1s ease-in infinite;
@@ -58,6 +59,7 @@
 .textCon .item{
     position: absolute;
     opacity: 0;
+    background-color:#cc2a5d;
     transform: rotate(45deg);
     animation: hearts 3s ease-in infinite;
 }
@@ -66,6 +68,7 @@
     content:'';
     width:100%;
     height:100%;
+    background-color:#cc2a5d;
     position: absolute;
     top:0;
     left:0;
