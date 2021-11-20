@@ -39,6 +39,8 @@ function timer_start(){
         hours = "0" + hours;
     duration = parseInt(duration / 24);
     var days = duration;
+    document.getElementsByClassName('days-number')[0].innerHTML = ("" +days);
+    document.getElementsByClassName('seconds')[0].innerHTML = (hours + " 时 " + minutes + " 分 " + seconds + " 秒");
 }
 window.setInterval(timer_start,1000);
 timer_start();
