@@ -117,7 +117,6 @@ html,body{
 .seconds {
     margin-top: 10px;
     font-size: 32px;
-    font-family: Arial;
     width: auto;
     text-align: center;
 }
@@ -125,7 +124,6 @@ html,body{
 .seconds-label {
     margin-top: 32px;
     font-size: 32px;
-    font-family: Arial;
     width: auto;
     text-align: center;
 }
@@ -140,7 +138,6 @@ html,body{
 }
 .words {
     font-size: 50px;
-    font-family: Arial;
     width: auto;
     text-align: center;
 }
