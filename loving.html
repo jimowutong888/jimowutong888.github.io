@@ -70,7 +70,7 @@
                     var oEndDate = new Date(sYear, (sMonth - 1), sDay);
                     var oNowDate = new Date();
                     var iRemain = 0;
-                    iRemain = parseInt((oEndDate.getTime() - oNowDate.getTime()) / 1000);
+                    iRemain = parseInt((oNowDate.getTime() - oEndDate.getTime()) / 1000);
                     if(iRemain <= 0) { //判断开始时间是否小于或等于今天
                         clearInterval(timer);
                         iRemain = 0;
