@@ -15,7 +15,6 @@ html,body{
     -ms-transform:translate(-50%,-50%);
     -moz-transform:translate(-50%,-50%);
     -o-transform:translate(-50%,-50%);
-	background-image:url('/static/img/girlfriend.jpg');
 }
 .textCon{
     -webkit-user-select: none;
