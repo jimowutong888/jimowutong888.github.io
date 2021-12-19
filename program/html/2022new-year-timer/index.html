@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>寂寞酱 - 元旦倒计时</title>
+    <link rel="icon" type="image/x-icon" href="/static/img/logo.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+    <style>
+            #time {
+                font-weight: 600;
+                text-align: center;
+                margin: 100px auto;
+            }
+            #content {
+                font-size: 2em;
+            }
+            #title {
+                font-size: 1.5em;
+            }
+            #abstract {
+                font-size: 3em;
+            }
+        </style>
+        <script>
+            function $(el) {
+                if(typeof(el) == 'string') {
+                    return(document.getElementById(el));
+                }
+                return(el);
+            }
+
+            function fillZero(num, digit) {
+                var str = '' + num;
+                if(str.length < digit) {
+                    str = '0' + str;
+                }
+                return str;
+            }
+            window.onload = function() {
+                var oDiv1 = $('time');
+                var aInput = oDiv1.getElementsByTagName('input');
+                var oYear = aInput[0]; //年
+                var oMonth = aInput[1]; //月
+                var oDay = aInput[2] //日
+                var oDiv2 = $('content');
+                var aSpan = oDiv2.getElementsByTagName('span');
+                var sTxtDay = aSpan[0]; //天
+                var sTxtHour = aSpan[1] //小时
+                var sTxtMin = aSpan[2] //分
+                var sTxtSec = aSpan[3] //秒
+                var oTxtTarget = document.getElementsByTagName('b')[0];
+                var timer = null;
+                timer = setInterval(updateTime, 1000);
+                updateTime();
+
+                function updateTime() {
+                    
+                    var sYear = 2022;
+                    var sMonth = 1;
+                    var sDay = 1;
+                    if(sMonth > 12 || sDay > 31){
+                        clearInterval(timer);
+                        return;
+                    }
+                    oTxtTarget.innerHTML = sYear + ' 年 ' + sMonth + ' 月 ' + sDay + ' 日 ';
+                    var oEndDate = new Date(sYear, (sMonth - 1), sDay);
+                    var oNowDate = new Date();
+                    var iRemain = 0;
+                    iRemain = parseInt((oEndDate.getTime() - oNowDate.getTime()) / 1000);
+                    if(iRemain <= 0) { //判断开始时间是否小于或等于今天
+                        clearInterval(timer);
+                        iRemain = 0;
+                    }
+                    var iDay = parseInt(iRemain / 86400); //剩余天数
+
+                    iRemain %= 86400;
+                    var iHour = parseInt(iRemain / 3600); //剩余小时
+
+                    iRemain %= 3600;
+                    var iMin = parseInt(iRemain / 60); //剩余分钟
+
+                    iRemain %= 60;
+                    var iSec = iRemain; //剩余秒
+
+                    sTxtDay.innerHTML = fillZero(iDay, 2);
+                    sTxtHour.innerHTML = fillZero(iHour, 2);
+                    sTxtMin.innerHTML = fillZero(iMin, 2);
+                    sTxtSec.innerHTML = fillZero(iSec, 2);
+                }
+                
+
+            }
+        </script>
+    </head>
+
+   <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-theme-layout-dark mdui-text-color-light-green mdui-valign mdui-bottom-nav-fixed" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+  <div class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed mdui-appbar-scroll-hide mdui-headroom mdui-headroom-pinned-top">
+    <div class="mdui-toolbar mdui-color-theme">
+      <a class="mdui-typo-headline" one-link-mark="yes">元旦倒计时 - 2022</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </div>
+        <div id="time" class="mdui-container">
+            <div id="abstract" class="mdui-text-color-red">祝愿我们的祖国72岁生日快乐~</div>
+            </br>
+            <div class="mdui-divider-light"></div>
+            </br>
+            <p id="title">现在距离 <b>2022 年 01 月 01 日</b> 还剩</p>
+            <div id="content">
+                <span>00</span>天
+                <span>00</span>小时
+                <span>00</span>分
+                <span>00</span>秒
+            </div>
+        </div>
+
+    <div class="mdui-bottom-nav mdui-color-grey">
+  			<a href="#" class="mdui-ripple mdui-bottom-nav-active">
+    			<i class="mdui-icon material-icons">alarm</i>
+    			<label>默认</label>
+  			</a>
+  			<a onclick="alert('该倒计时日期不支持自定义')" class="mdui-ripple">
+    			<i class="mdui-icon material-icons">alarm_on</i>
+    			<label>自定义</label>
+  			</a>
+		</div>
+    </body>
+</html>
