@@ -44,7 +44,6 @@
                 return str;
             }
             window.onload = function() {
-                document.getElementById("viedo").style.cssText = "display:none;";
                 var oDiv1 = $('time');
                 var aInput = oDiv1.getElementsByTagName('input');
                 var oYear = aInput[0]; //年
@@ -96,9 +95,6 @@
                     sTxtSec.innerHTML = fillZero(iSec, 2);
                 }
             }
-            function open_video(){
-                document.getElementById("video").style.cssText = "display:block;";
-                }
         </script>
     </head>
 
@@ -124,11 +120,11 @@
             </div>
             </br>
             </br>
-            <a target="_blank" onclick="open_video()" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="project.mp4">点击查看我对您的祝福</a>
+            <a target="_blank" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="project.mp4">点击查看我对您的祝福</a>
             </br>
             </br>
-            <div id="video" style="border-radius:10px">
-                <video width="720" height="540" controls>
+            <div style="border-radius:10px">
+                <video width="720" height="540" controls muted="muted" loop="loop">
                     <source src="project.mp4" type="video/mp4">
                 </video>
             </div>
