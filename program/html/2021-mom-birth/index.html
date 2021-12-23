@@ -56,7 +56,7 @@
                 var sTxtHour = aSpan[1] //小时
                 var sTxtMin = aSpan[2] //分
                 var sTxtSec = aSpan[3] //秒
-                                var oTxtTarget = document.getElementsByTagName('b')[0];
+                var oTxtTarget = document.getElementsByTagName('b')[0];
                 var timer = null;
                 timer = setInterval(updateTime, 1000);
                 updateTime();
@@ -95,8 +95,6 @@
                     sTxtMin.innerHTML = fillZero(iMin, 2);
                     sTxtSec.innerHTML = fillZero(iSec, 2);
                 }
-                
-
             }
             function open_video(){
                 document.getElementById("video").style.cssText = "display:block;";
