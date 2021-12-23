@@ -27,6 +27,15 @@
             #abstract {
                 font-size: 3em;
             }
+            .video-mask{
+            width: 360px;
+            -webkit-mask-image: -webkit-radial-gradient(circle,white 100%,black 100%); 
+            -webkit-transform: rotate(0.000001deg); 
+            -webkit-border-radius: 10px; 
+            -moz-border-radius: 10px;
+            border-radius: 10px; 
+            overflow: hidden; 
+            }
     </style>
         <script>
             function $(el) {
@@ -123,7 +132,7 @@
             <a target="_blank" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" oncilck="alert('该功能还在努力制作当中哦~')">点击查看我对您的祝福</a>
             </br>
             </br>
-            <div style="border-radius:10px" oncontextmenu="return false">
+            <div class="video-mask" style="border-radius:10px" oncontextmenu="return false">
                 <video controls autoplay="autoplay" poster="poster.png" width="480" height="360" muted="muted" loop="loop">
                     <source src="project.mp4" type="video/mp4">
                 </video>
