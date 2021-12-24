@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>寂寞酱 - 圣诞倒计时</title>
-    <body style="background-repeat:no-repeat;background-attachment:fixed;background-position:center;background-size:cover;" background="background.jpg"></body>
+    <title>寂寞酱 - 元旦信件</title>
+    <body style="background-repeat:no-repeat;background-attachment:fixed;background-position:center;background-size:cover;" background="background.mp4"></body>
     <audio controls autoplay="autoplay" hidden="true" loop="true">
         <source src="https://m.xiguacity.cn/user_projects_assets/84c9f78fa345b19c3eacb56004b63a86.mp3">
     </audio>
@@ -62,9 +62,9 @@
 
                 function updateTime() {
                     
-                    var sYear = 2021;
-                    var sMonth = 12;
-                    var sDay = 25;
+                    var sYear = 2022;
+                    var sMonth = 1;
+                    var sDay = 1;
                     if(sMonth > 12 || sDay > 31){
                         clearInterval(timer);
                         return;
@@ -103,12 +103,12 @@
    <body class="mdui-theme-primary-white mdui-theme-accent-pink mdui-loaded mdui-theme-layout-dark mdui-text-color-white mdui-valign mdui-bottom-nav-fixed" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
   <div class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed mdui-appbar-scroll-hide mdui-headroom mdui-headroom-pinned-top">
     <div class="mdui-toolbar mdui-color-theme">
-      <a class="mdui-typo-headline" one-link-mark="yes">圣诞倒计时 - 2021</a>
+      <a class="mdui-typo-headline" one-link-mark="yes">元旦信件 - 2022</a>
       <div class="mdui-toolbar-spacer"></div>
     </div>
   </div>
         <div id="time" class="mdui-container">
-            <p id="title">现在距离 <b>2021 年 12 月 25 日</b> 还剩</p>
+            <p id="title">现在距离 <b>2022 年 01 月 01 日</b> 还剩</p>
             <div id="content">
                 <span>00</span>天
                 <span>00</span>小时
@@ -116,16 +116,5 @@
                 <span>00</span>秒
             </div>
         </div>
-
-    <div class="mdui-bottom-nav mdui-color-grey">
-  			<a href="#" class="mdui-ripple mdui-bottom-nav-active">
-    			<i class="mdui-icon material-icons">alarm</i>
-    			<label>默认</label>
-  			</a>
-  			<a onclick="alert('该倒计时日期不支持自定义')" class="mdui-ripple">
-    			<i class="mdui-icon material-icons">alarm_on</i>
-    			<label>自定义</label>
-  			</a>
-		</div>
     </body>
 </html>
