@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Spelling Bee</title>
+    <link href="spelling-style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+	
+    <style>
+      	html {
+        	background: #3f51b5;
+      	}
+      	.logo {
+        	border-radius: 120px;
+      	}
+      	.logo-container {
+        	padding-top: 15px;
+      	}
+    </style>
+    <meta name="ljjc::status" content="on" />
+  </head>
+	<script src="dict.json" charset="utf-8"></script>
+  <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+    <div class="mdui-appbar mdui-shadow-0 mdui-headroom mdui-headroom-pinned-top">
+      <div class="mdui-toolbar mdui-color-theme">
+        <div class="mdui-typo-headline" one-link-mark="yes">Welcome to Spelling Bee</div>
+    </div>
+    <div class="main-section mdui-color-theme">
+      <div class="mdui-container">
+        <div class="logo-container">
+			<button onclick="startGame();" id="start" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">Start Game</button>
+			<h2 id="word"></h2>
+			<h3 id="phonetic"></h3>
+			<h4 id="definition"></h4>
+			<button disabled="true" onclick="getNewWord();" id="refresh" class="mdui-hidden"><i class="mdui-icon material-icons">refresh</i></button>
+			<button disabled="true" onclick="playSound();" id="playSound" class="mdui-hidden"><i class="mdui-icon material-icons">play_arrow</i></button>
+			<button disabled="true" onclick="submit();" id="submit" class="mdui-hidden"><i class="mdui-icon material-icons">send</i></button>
+			<button disabled="true" id="search" target="_blank" class="mdui-hidden"><i class="mdui-icon material-icons">search</i></button>
+			<br>
+			<br>
+			<div class="mdui-divider"></div>
+			<br>
+			<button onclick="window.location='https://www.ccw.site/detail/60439bc4601c992024c69f97?kontakt=YmFja19mcm9tX2h0bWw%3D'" id="back" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">Back to scratch version</button>
+			<h3 class="mdui-color-blue-500 mdui-text-color-green-200" id="score"><h3>
+
+        </div>
+      </div>
+
+    </div>
+    </div>
+	<script type="text/javascript">
+	function startGame(){
+		score = 0;
+		document.getElementById("start").className="mdui-hidden";
+		document.getElementById("back").className="mdui-hidden";
+		document.getElementById("playSound").className="mdui-btn mdui-btn-icon mdui-btn-dense mdui-color-theme-accent mdui-ripple";
+		document.getElementById("submit").className="mdui-btn mdui-btn-icon mdui-btn-dense mdui-color-theme-accent mdui-ripple";
+		document.getElementById("refresh").className="mdui-btn mdui-btn-icon mdui-btn-dense mdui-color-theme-accent mdui-ripple";
+		//document.getElementById("search").className="mdui-btn mdui-btn-icon mdui-btn-dense mdui-color-theme-accent mdui-ripple";
+		document.getElementById('score').innerHTML = "Your current score is : "+score.toString();
+		audio = document.createElement("audio");
+		audio.src = 'https://dict.youdao.com/dictvoice?audio=a&type=1';
+		getNewWord();
+	}
+	function playSound(){
+	audio.src = 'https://dict.youdao.com/dictvoice?audio='+wordList[num]+'&type=1';
+	audio.play();
+	}
+	function stopSound(){
+	audio.pause();
+	}
+	function submit(){
+	document.getElementById("playSound").disabled="true";
+	document.getElementById("refresh").disabled="true";
+	document.getElementById("submit").disabled="true";
+	var ans = prompt("Please type your answer here:\n(Input the whole word)\n"+document.getElementById('word').innerText+"\n"+document.getElementById('definition').innerText);
+	if(ans == wordList[num]){
+		score += 1;
+		audio.src = 'true.mp3';
+	}
+	else{
+		document.getElementById("word").className="mdui-text-color-red-200";
+		audio.src = 'false.mp3';
+	}
+	document.getElementById("word").innerHTML = wordList[num];
+	audio.play();
+	document.getElementById('score').innerHTML = "Your current score is : "+score.toString();
+	setTimeout("playSound();",2000);
+	setTimeout("getNewWord();",5000);
+	document.getElementById("playSound").disabled="";
+	document.getElementById("refresh").disabled="";
+	document.getElementById("submit").disabled="";
+	}
+	function getNewWord(){
+	stopSound();
+	document.getElementById("word").className="";
+	var info = document.querySelector("#definition");
+	info.className='';
+	document.getElementById("playSound").disabled="true";
+	document.getElementById("refresh").disabled="true";
+	document.getElementById("submit").disabled="true";
+	num = parseInt(Math.random()*(20322-1)+1);
+  	var httpRequest = new XMLHttpRequest();
+        httpRequest.open('GET', 'dict.json', true);
+        httpRequest.send();
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                wordList = JSON.parse(httpRequest.responseText);
+				getWord(wordList);
+				setTimeout("getDefinition(wordList)",0);
+            }
+		};
+	}
+	function getWord(wordList){
+	var sentence = document.querySelector("#word");
+	//var search = document.getElementById('search');
+	var info = document.querySelector("#definition");
+	var phonetic = document.querySelector("#phonetic");
+	//search.setAttribute('onclick', 'window.open(\'https://fanyi.baidu.com/#en/zh/'+wordList[num]+'\')');
+	var showingWord = wordList[num].slice(0, 1);
+	for(i=1;i<wordList[num].length;i++){
+		showingWord += " _";
+	}
+    sentence.innerHTML = showingWord;
+	//var audio = new Audio('https://dict.youdao.com/dictvoice?audio='+sentence.innerText+'&type=1');
+	//audio.play();
+	phonetic.innerHTML = '-';
+	info.innerHTML = '-';
+	}
+	function getDefinition(wordList){
+	var httpRequest = new XMLHttpRequest();
+        httpRequest.open('GET', 'https://api.dictionaryapi.dev/api/v2/entries/en/'+wordList[num], true);
+        httpRequest.send();
+        httpRequest.onreadystatechange = function () {
+    		var info = document.querySelector("#definition")
+			var phonetic = document.querySelector("#phonetic")
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var translate = JSON.parse(httpRequest.responseText);
+    			info.innerHTML = translate[0]["meanings"][0]["definitions"][0]["definition"];
+				if(translate[0].hasOwnProperty("phonetic")){
+					phonetic.innerHTML = translate[0]["phonetic"];
+				}
+				audio.src = 'https://dict.youdao.com/dictvoice?audio='+definition.innerText+'&type=1';
+				info.className= '';
+				audio.play();
+            }
+			else{
+				info.innerHTML = 'There\'s some error on translate API.<br>Please refresh for an another word or try again later.';
+				info.className= 'mdui-color-red-500';
+			}
+			document.getElementById("refresh").disabled="";
+			document.getElementById("playSound").disabled="";
+			document.getElementById("submit").disabled="";
+        };
+	}
+	</script>
+	</body>
+</html>
